@@ -1,15 +1,15 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Music_Matchup.Models;
 
 namespace Music_Matchup.Controllers
 {
-    [Produces("application/json")]
+    //[Produces("application/json")]
     [Route("api/[controller]")]
     public class ProjectsController : Controller
     {
@@ -38,7 +38,7 @@ namespace Music_Matchup.Controllers
 
             var project = await _context.Projects.SingleOrDefaultAsync(m => m.Id == id);
 
-            if (project == null )
+            if (project == null)
             {
                 return NotFound();
             }
@@ -64,6 +64,9 @@ namespace Music_Matchup.Controllers
 
             try
             {
+                var oldInfo = _context.Projects.FirstOrDefault(i => i.Id == id);
+                oldInfo.Name = project.Name;
+                oldInfo.Description = project.Description;
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
@@ -81,6 +84,7 @@ namespace Music_Matchup.Controllers
             return NoContent();
         }
 
+
         // POST: api/Projects
         [HttpPost]
         public async Task<IActionResult> PostProject([FromBody] Project project)
@@ -93,7 +97,7 @@ namespace Music_Matchup.Controllers
             _context.Projects.Add(project);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetProject", new Project{ Id = project.Id }, project);
+            return CreatedAtAction("GetProject", new Project { Id = project.Id }, project);
         }
 
         // DELETE: api/Projects/5
