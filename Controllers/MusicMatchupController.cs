@@ -13,9 +13,9 @@ namespace Music_Matchup.Controllers
     //[Route("api/[controller]")]
     public class MusicMatchupController : Controller
     {
-        private readonly ProjectContext _context;
+        private readonly MusicMatchupContext _context;
 
-        public MusicMatchupController (ProjectContext context)
+        public MusicMatchupController (MusicMatchupContext context)
         {
             _context = context;
         }

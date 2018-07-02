@@ -7,7 +7,7 @@ namespace Music_Matchup.Models
 {
     public class MusicMatchupDataAccessLayer
     {
-        ProjectContext db = new ProjectContext();
+        MusicMatchupContext db = new MusicMatchupContext();
 
         public IEnumerable<Project> GetAllProjects()
         {

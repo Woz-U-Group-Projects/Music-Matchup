@@ -11,8 +11,8 @@ namespace Music_Matchup.Models
     {
         public static void Initialize(IServiceProvider serviceProvider)
         {
-            using (var context = new ProjectContext(
-                serviceProvider.GetRequiredService<DbContextOptions<ProjectContext>>()))
+            using (var context = new MusicMatchupContext(
+                serviceProvider.GetRequiredService<DbContextOptions<MusicMatchupContext>>()))
             {
                 // Check if any students or courses already exist
                 if (context.Projects.Any())

@@ -7,7 +7,7 @@ using Music_Matchup.Models;
 
 namespace Music_Matchup.Migrations
 {
-    [DbContext(typeof(ProjectContext))]
+    [DbContext(typeof(MusicMatchupContext))]
     partial class ProjectContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
@@ -29,6 +29,22 @@ namespace Music_Matchup.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Projects");
+                });
+
+            modelBuilder.Entity("Music_Matchup.Models.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Email");
+
+                    b.Property<string>("Password");
+
+                    b.Property<string>("Username");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
                 });
 #pragma warning restore 612, 618
         }

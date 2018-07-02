@@ -28,7 +28,7 @@ namespace Music_Matchup
         public void ConfigureServices(IServiceCollection services)
         {
             //For Database
-            services.AddDbContext<ProjectContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<MusicMatchupContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddMvc();
         }

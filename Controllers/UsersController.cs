@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,69 +9,64 @@ using Music_Matchup.Models;
 
 namespace Music_Matchup.Controllers
 {
-    //[Produces("application/json")]
     [Route("api/[controller]")]
-    public class ProjectsController : Controller
+    public class UsersController : Controller
     {
         private readonly MusicMatchupContext _context;
 
-        public ProjectsController(MusicMatchupContext context)
+        public UsersController(MusicMatchupContext context)
         {
             _context = context;
         }
 
-        // GET api/Projects
+        // GET api/users
         [HttpGet]
-        public IEnumerable<Project> GetProjects()
+        public IEnumerable<User> GetUsers()
         {
-            return _context.Projects;
+            return _context.Users;
         }
 
-        // GET api/Projects/3
+        // GET api/users/3
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetProject([FromRoute] int id)
+        public async Task<IActionResult> GetUser([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var project = await _context.Projects.SingleOrDefaultAsync(m => m.Id == id);
+            var user = await _context.Users.SingleOrDefaultAsync(m => m.Id == id);
 
-            if (project == null)
+            if (user == null)
             {
                 return NotFound();
             }
 
-            return Ok(project);
+            return Ok(user);
         }
 
-        // PUT: api/Project/3
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutProject([FromRoute] int id, [FromBody] Project project)
+        // PUT api/users/3
+        public async Task<IActionResult> PutUser([FromRoute] int id, [FromBody] User user)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != project.Id)
+            if (id != user.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(project).State = EntityState.Modified;
+            _context.Entry(user).State = EntityState.Modified;
 
             try
             {
-                var oldInfo = _context.Projects.FirstOrDefault(i => i.Id == id);
-                oldInfo.Name = project.Name;
-                oldInfo.Description = project.Description;
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ProjectExists(id))
+                if (!UserExists(id))
                 {
                     return NotFound();
                 }
@@ -80,50 +75,49 @@ namespace Music_Matchup.Controllers
                     throw;
                 }
             }
-
+            
             return NoContent();
         }
 
-
-        // POST: api/Projects
+        // POST api/users
         [HttpPost]
-        public async Task<IActionResult> PostProject([FromBody] Project project)
+        public async Task<IActionResult> PostUser([FromBody] User user)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.Projects.Add(project);
+            _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetProject", new Project { Id = project.Id }, project);
+            return CreatedAtAction("GetUser", new User { Id = user.Id }, user);
         }
 
-        // DELETE: api/Projects/5
+        // DELETE api/users/3
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteProject([FromRoute] int id)
+        public async Task<IActionResult> DeleteUser([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var project = await _context.Projects.SingleOrDefaultAsync(m => m.Id == id);
-            if (project == null)
+            var user = await _context.Users.SingleOrDefaultAsync(m => m.Id == id);
+            if (user == null)
             {
                 return NotFound();
             }
 
-            _context.Projects.Remove(project);
+            _context.Users.Remove(user);
             await _context.SaveChangesAsync();
 
-            return Ok(project);
+            return Ok(user);
         }
 
-        private bool ProjectExists(int id)
+        private bool UserExists(int id)
         {
-            return _context.Projects.Any(e => e.Id == id);
+            return _context.Users.Any(e => e.Id == id);
         }
     }
 }
