@@ -41,7 +41,6 @@ var FetchProject = /** @class */ (function (_super) {
                     React.createElement("th", null, "Description"))),
             React.createElement("tbody", null, projList.map(function (proj) {
                 return React.createElement("tr", { key: proj.Id },
-                    React.createElement("td", null),
                     React.createElement("td", null, proj.Id),
                     React.createElement("td", null, proj.name),
                     React.createElement("td", null, proj.description));

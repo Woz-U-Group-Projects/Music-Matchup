@@ -13,9 +13,9 @@ namespace Music_Matchup.Controllers
     //[Route("api/[controller]")]
     public class MusicMatchupController : Controller
     {
-        private readonly ProjectContext _context;
+        private readonly MusicMatchupContext _context;
 
-        public MusicMatchupController(ProjectContext context)
+        public MusicMatchupController (MusicMatchupContext context)
         {
             _context = context;
         }
@@ -26,7 +26,7 @@ namespace Music_Matchup.Controllers
         [HttpGet]
         [Route("api/Project/Index")]
 
-        public IEnumerable<Project> Index()
+        public IEnumerable<Project> GetProjects()
         {
             return _context.Projects;
         }
@@ -56,85 +56,27 @@ namespace Music_Matchup.Controllers
             return Ok(project);
         }
 
-        // PUT: api/Project/3
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutProject([FromRoute] int id, [FromBody] Project project)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //public string Get(int id)
+        //{
+        //    return "value";
+        //}
 
-            if (id != project.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(project).State = EntityState.Modified;
-
-            try
-            {
-                var oldInfo = _context.Projects.FirstOrDefault(i => i.Id == id);
-                oldInfo.Name = project.Name;
-                oldInfo.Description = project.Description;
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ProjectExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-
-        // POST: api/Projects
+        // POST api/<controller>
         [HttpPost]
-        public async Task<IActionResult> PostProject([FromBody] Project project)
+        public void Post([FromBody]string value)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            _context.Projects.Add(project);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetProject", new Project { Id = project.Id }, project);
         }
 
-        // DELETE: api/Projects/5
+        // PUT api/<controller>/5
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody]string value)
+        {
+        }
+
+        // DELETE api/<controller>/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteProject([FromRoute] int id)
+        public void Delete(int id)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var project = await _context.Projects.SingleOrDefaultAsync(m => m.Id == id);
-            if (project == null)
-            {
-                return NotFound();
-            }
-
-            _context.Projects.Remove(project);
-            await _context.SaveChangesAsync();
-
-            return Ok(project);
-        }
-
-        private bool ProjectExists(int id)
-        {
-            return _context.Projects.Any(e => e.Id == id);
         }
     }
 }
-

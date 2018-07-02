@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Music-Matchup.csproj"
+                "${workspaceFolder}/Music_Matchup.csproj"
             ],
             "problemMatcher": "$msCompile"
         }

@@ -3,12 +3,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Music_Matchup.Models;
 
 namespace Music_Matchup.Migrations
 {
-    [DbContext(typeof(ProjectContext))]
+    [DbContext(typeof(MusicMatchupContext))]
     [Migration("20180624203252_InitialCreate")]
     partial class InitialCreate
     {

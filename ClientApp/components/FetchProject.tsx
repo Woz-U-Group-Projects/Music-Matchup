@@ -44,7 +44,6 @@ export class FetchProject extends React.Component<RouteComponentProps<{}>, Fetch
             <tbody>
                 {projList.map(proj =>
                     <tr key={proj.Id}>
-                        <td></td>
                         <td>{proj.Id}</td>
                         <td>{proj.name}</td>
                         <td>{proj.description}</td>

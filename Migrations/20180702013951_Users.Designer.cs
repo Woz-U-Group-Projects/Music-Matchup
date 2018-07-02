@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 using Music_Matchup.Models;
 
 namespace Music_Matchup.Migrations
 {
     [DbContext(typeof(MusicMatchupContext))]
-    partial class ProjectContextModelSnapshot : ModelSnapshot
+    [Migration("20180702013951_Users")]
+    partial class Users
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
