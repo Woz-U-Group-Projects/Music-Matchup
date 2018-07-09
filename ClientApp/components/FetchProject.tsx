@@ -54,7 +54,7 @@ export class FetchProject extends React.Component<RouteComponentProps<{}>, Fetch
     }
 }
 
-    export class ProjectData {
+export class ProjectData {
     Id: number = 0;
     name: string = "";
     description: string = "";
