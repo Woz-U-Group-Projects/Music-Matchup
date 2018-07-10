@@ -17,6 +17,7 @@ namespace Music_Matchup.Models
 
         }
 
+        public DbSet<Artist> Artists { get; set; }
         public DbSet<Project> Projects { get; set; }
         public DbSet<User> Users { get; set; }
     }

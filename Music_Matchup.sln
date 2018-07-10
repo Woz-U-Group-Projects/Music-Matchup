@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Music_Matchup", "Music_Matchup.csproj", "{2C5CDF59-C5F7-45C3-8CB6-21F16683B42C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Music_Matchup", "Music_Matchup.csproj", "{8399C376-C9BF-46AC-BE41-018667BA81FE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2C5CDF59-C5F7-45C3-8CB6-21F16683B42C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2C5CDF59-C5F7-45C3-8CB6-21F16683B42C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2C5CDF59-C5F7-45C3-8CB6-21F16683B42C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2C5CDF59-C5F7-45C3-8CB6-21F16683B42C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8399C376-C9BF-46AC-BE41-018667BA81FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8399C376-C9BF-46AC-BE41-018667BA81FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8399C376-C9BF-46AC-BE41-018667BA81FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8399C376-C9BF-46AC-BE41-018667BA81FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {A96B3EA7-7B57-488E-8FCE-0640A50DB31E}
+		SolutionGuid = {3EAD0693-AE1F-4E20-991C-E7CE425E9C58}
 	EndGlobalSection
 EndGlobal

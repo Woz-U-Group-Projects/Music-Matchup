@@ -9,6 +9,18 @@ namespace Music_Matchup.Models
     {
         MusicMatchupContext db = new MusicMatchupContext();
 
+        public IEnumerable<Artist> GetAllArtists()
+        {
+            try
+            {
+                return db.Artists.ToList();
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
         public IEnumerable<Project> GetAllProjects()
         {
             try

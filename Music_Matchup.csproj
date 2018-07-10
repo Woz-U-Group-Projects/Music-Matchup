@@ -23,11 +23,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\components\Auth.tsx" />
+    <None Remove="ClientApp\components\FetchArtist.tsx" />
+    <None Remove="ClientApp\components\Login.tsx" />
     <None Remove="ClientApp\FetchProject.tsx" />
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\components\Auth.tsx" />
+    <TypeScriptCompile Include="ClientApp\components\FetchArtist.tsx" />
     <TypeScriptCompile Include="ClientApp\components\FetchProject.tsx" />
+    <TypeScriptCompile Include="ClientApp\components\Login.tsx" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">

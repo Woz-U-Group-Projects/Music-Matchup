@@ -2,15 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Music_Matchup.Models;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Music_Matchup.Controllers
 {
-    //[Route("api/[controller]")]
     public class MusicMatchupController : Controller
     {
         private readonly MusicMatchupContext _context;
@@ -22,6 +21,8 @@ namespace Music_Matchup.Controllers
 
         MusicMatchupDataAccessLayer objproject = new MusicMatchupDataAccessLayer();
 
+        [Authorize]
+
         // GET: api/<controller>
         [HttpGet]
         [Route("api/Project/Index")]
@@ -30,11 +31,6 @@ namespace Music_Matchup.Controllers
         {
             return _context.Projects;
         }
-
-        //public IEnumerable<Project> Index()
-        //{
-        //    return objproject.GetAllProjects();
-        //}
 
         // GET api/<controller>/5
         [HttpGet("{id}")]
@@ -56,10 +52,6 @@ namespace Music_Matchup.Controllers
             return Ok(project);
         }
 
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
 
         // POST api/<controller>
         [HttpPost]

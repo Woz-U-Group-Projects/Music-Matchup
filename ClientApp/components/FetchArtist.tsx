@@ -1,18 +1,17 @@
 ﻿import * as React from 'react';
 import { RouteComponentProps } from 'react-router';
-import { Link, NavLink, Route, Redirect } from 'react-router-dom';
-//import { ArtistData } from './FetchArtist';
+import { Link, NavLink, Route } from 'react-router-dom';
 import { Auth } from './Auth';
 
-interface FetchProjectDataState {
-    projList: ProjectData[];
+interface FetchArtistDataState {
+    artistList: ArtistData[];
     loading: boolean;
 }
 
-export class FetchProject extends React.Component<RouteComponentProps<{}>, FetchProjectDataState> {
+export class FetchArtist extends React.Component<RouteComponentProps<{}>, FetchArtistDataState> {
     constructor() {
         super();
-        this.state = { projList: [], loading: true };
+        this.state = { artistList: [], loading: true };
     }
 
     logOut = () => {
@@ -22,12 +21,8 @@ export class FetchProject extends React.Component<RouteComponentProps<{}>, Fetch
         }));
     }
 
-    handleLogOff = () => {
-        this.logOut();
-    }
-
     componentDidMount() {
-        fetch('api/Project/Index', {
+        fetch('api/Artists/Index', {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('auth_token')}`,
             }
@@ -37,9 +32,9 @@ export class FetchProject extends React.Component<RouteComponentProps<{}>, Fetch
                     alert("Please Log In to view.")
                 }
                 return response;
-            }).then(response => response.json() as Promise<ProjectData[]>)
+            }).then(response => response.json() as Promise<ArtistData[]>)
             .then(data => {
-                this.setState({ projList: data, loading: false })
+                this.setState({ artistList: data, loading: false })
             }).catch(error => {
                 this.logOut();
             });
@@ -48,42 +43,42 @@ export class FetchProject extends React.Component<RouteComponentProps<{}>, Fetch
     public render() {
         let contents = this.state.loading
             ? <p><em>Loading...</em></p>
-            : this.renderProjectTable(this.state.projList);
-
+            : this.renderArtistTable(this.state.artistList);
 
         return <div>
-            <h1>Project Data</h1>
-            <p>This is the project data</p>
+            <h1>Artist Data</h1>
+            <p>This is the artist data</p>
             {contents}
         </div>;
     }
 
     //Return HTML table to render() method.
-    private renderProjectTable(projList: ProjectData[]) {
+    private renderArtistTable(artistList: ArtistData[]) {
         return <table className='table'>
             <thead>
                 <tr>
                     <th></th>
-                    <th>Name</th>
-                    <th>Description</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
                 </tr>
             </thead>
             <tbody>
-                {projList.map(proj =>
-                    <tr key={proj.id}>
-                        <td>{proj.id}</td>
-                        <td>{proj.name}</td>
-                        <td>{proj.description}</td>
-                    </tr>
+                {artistList.map(art => {
+                    return (<tr key={art.id}>
+                        <td>{art.id}</td>
+                        <td>{art.firstName}</td>
+                        <td>{art.lastName}</td>
+                    </tr>)
+                }
                 )}
             </tbody>
         </table>;
     }
 }
 
-export class ProjectData {
+export class ArtistData {
     id: number = 0;
-    name: string = "";
-    description: string = "";
+    firstName: string = "";
+    lastName: string = "";
 }
 
